@@ -116,11 +116,9 @@
 .homeButtons__touchdown,
 .homeButtons__fieldGoal,
 .awayButtons__touchdown,
-.awayButtons__fieldGoal,
-.statusButtons__down,
-.statusButtons__toGo,
-.statusButtons__ballOn,
-.statusButtons__Quarter {
+.awayButtons__fieldGoal {
   margin: 1rem;
   border-radius: 4px;
 }
+
+
