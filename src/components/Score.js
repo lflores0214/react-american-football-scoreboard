@@ -13,32 +13,32 @@ export default function Score() {
   const [homeScore, setHomeScore] = useState(0);
   const [awayScore, setAwayScore] = useState(0);
 
-  let [downValue, setDownValue] = useState(1);
-  let [toGoValue, setToGoValue] = useState(10);
-  let [ballOnValue, setBallOnValue] = useState(50);
-  let [quarterValue, setQuarterValue] = useState(1);
+  const [downValue, setDownValue] = useState(1);
+  const [toGoValue, setToGoValue] = useState(10);
+  const [ballOnValue, setBallOnValue] = useState(50);
+  const [quarterValue, setQuarterValue] = useState(1);
 
-  const downFunction = () => {
+  const down = () => {
     if (downValue !== 4) {
-      downValue ++;
+      setDownValue(downValue + 1)
     } else {
       setDownValue(1)
     }
   };
 
-  const toGoFunction = () => {
+  const toGo = () => {
     setToGoValue(toGoValue + 1);
   };
 
-  const ballOnFunction = () => {
+  const ballOn = () => {
     setBallOnValue(ballOnValue + 1);
   };
 
-  const quarterFunction = () => {
-    if (quarterValue === 4) {
-      setQuarterValue(0);
-    } else {
+  const quarter = () => {
+    if (quarterValue <= 3) {
       setQuarterValue(quarterValue + 1);
+    } else {
+      setQuarterValue(1);
     }
   }
 
@@ -83,7 +83,11 @@ export default function Score() {
               <div className="away__score">{awayScore}</div>
             </div>
           </div>
-          <BottomRow />
+          <BottomRow 
+            quarterValue={quarterValue}
+            downValue={downValue}
+            toGoValue={toGoValue}
+            ballOnValue={ballOnValue}/>
         </section>
       </section>
       <section className="buttons">
@@ -112,24 +116,24 @@ export default function Score() {
           />
           <DownButton
             className="homeButtons__touchdown"
-            value={downFunction}
+            value={down}
             buttonValue="Next Down"
           />
-          {/* <ToGoButton
+          <ToGoButton
             className="homeButtons__touchdown"
-            value={toGoFunction}
+            value={toGo}
             buttonValue="Yards To Go"
-          /> */}
-          {/* <BallOnButton
+          />
+          <BallOnButton
             className="homeButtons__touchdown"
-            value={ballOnFunction}
+            value={ballOn}
             buttonValue="Ball On"
-          /> */}
-          {/* <QuarterButton
+          />
+          <QuarterButton
             className="homeButtons__touchdown"
-            value={quarterFunction}
+            value={quarter}
             buttonValue="Next Quarter"
-          /> */}
+          />
         </div>
         <div className="awayButtons">
           <AwayButtons
